@@ -21,3 +21,5 @@ services:
 networks:
   bzn-network:
     external: true
+volumes:
+  vol-db: {}    
