@@ -1,0 +1,23 @@
+version: '3.0'
+
+services:
+  db:
+    container_name: ${DB_CONTAINER_NAME}
+    hostname: ${DB_CONTAINER_NAME}
+    image: ${DB_IMAGE}
+    networks:
+      - bzn-network
+    restart: always
+    extra_hosts:
+    - "host.docker.internal:host-gateway"  
+    environment:
+      - POSTGRES_USER=${DB_USER}
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
+      - POSTGRES_DB=${DB_NAME}
+    ports:
+      - "${DB_PORT_EXT}:${DB_PORT_INT}"
+    volumes:
+      - vol-db:/var/lib/postgresql/data  
+networks:
+  bzn-network:
+    external: true

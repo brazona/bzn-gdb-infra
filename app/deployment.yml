@@ -1,0 +1,122 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: bzn-gdr-services
+  namespace: ${NAMESPACE}
+  labels:
+    app: bzn-gdr-services
+spec:
+  selector:
+    matchLabels:
+      app: bzn-gdr-services
+  replicas: 1
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+  template:
+    metadata:
+      labels:
+        app: bzn-gdr-services
+    spec:
+      restartPolicy: Always
+      securityContext:
+        runAsUser: 0
+      terminationGracePeriodSeconds: 30
+      imagePullSecrets:
+        - name: dockerconfigjson-github-com
+      containers:
+      - name: bzn-gdr-services
+        image: ${IMAGE}
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8484
+          protocol: TCP
+        env:
+          - name: SPRING_ACTIVE_PROFILE
+            valueFrom:
+              configMapKeyRef:
+                name: bzn-gdr-services           
+                key: SPRING_ACTIVE_PROFILE
+          - name: APPLICATION_NAME
+            valueFrom:
+              configMapKeyRef:
+                name: bzn-gdr-services           
+                key: APPLICATION_NAME          
+          - name: GITHUB_TOKEN
+            valueFrom:
+              configMapKeyRef:
+                name: bzn-gdr-services           
+                key: GITHUB_TOKEN  
+
+          - name: GITHUB_USER
+            valueFrom:
+              configMapKeyRef:
+                name: bzn-gdr-services           
+                key: GITHUB_USER   
+          - name: CONFIG_SERVER_USER
+            valueFrom:
+              configMapKeyRef:
+                name: bzn-gdr-services           
+                key: CONFIG_SERVER_USER
+          - name: CONFIG_SERVER_PASS
+            valueFrom:
+              configMapKeyRef:
+                name: bzn-gdr-services           
+                key: CONFIG_SERVER_PASS
+
+          - name: CONFIG_SERVER_ENCRYPT_KEY
+            valueFrom:
+              configMapKeyRef:
+                name: bzn-gdr-services           
+                key: CONFIG_SERVER_ENCRYPT_KEY
+
+          - name: GITHUB_BRANCH
+            valueFrom:
+              configMapKeyRef:
+                name: bzn-gdr-services           
+                key: GITHUB_BRANCH
+
+          - name: GITHUB_URL
+            valueFrom:
+              configMapKeyRef:
+                name: bzn-gdr-services           
+                key: GITHUB_URL     
+
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: bzn-gdr-services
+  namespace: ${NAMESPACE}
+spec:
+  selector:
+    app: bzn-gdr-services
+  type: ClusterIP
+  ports:
+    - protocol: TCP
+      port: 8484
+      targetPort: 8484
+
+---
+
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  namespace: ${NAMESPACE}
+  name: bzn-gdr-services-ingress
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: ${DNS}
+    http:
+      paths:
+        - pathType: Prefix
+          path: "/"
+          backend:
+            service:
+              name: bzn-gdr-services
+              port:
+                number: 8484

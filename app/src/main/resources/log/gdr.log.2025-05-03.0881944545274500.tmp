@@ -1,0 +1,43 @@
+2025-05-03T07:00:54.026-03:00  WARN 8428 --- [bzn-gdr-services] [main] onfigReactiveWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'nettyWriteResponseFilter' defined in class path resource [org/springframework/cloud/gateway/config/GatewayAutoConfiguration$NettyConfiguration.class]: Unsatisfied dependency expressed through method 'nettyWriteResponseFilter' parameter 0: Error creating bean with name 'gatewayProperties': Could not bind properties to 'GatewayProperties' : prefix=spring.cloud.gateway, ignoreInvalidFields=false, ignoreUnknownFields=true
+2025-05-03T07:00:54.216-03:00 ERROR 8428 --- [bzn-gdr-services] [main] o.s.b.d.LoggingFailureAnalysisReporter   : 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Binding to target org.springframework.cloud.gateway.config.GatewayProperties failed:
+
+    Property: spring.cloud.gateway.routes[0].uri
+    Value: "null"
+    Reason: não deve ser nulo
+
+
+Action:
+
+Update your application's configuration
+
+2025-05-03T07:11:13.502-03:00  WARN 9056 --- [bzn-gdr-services] [main] onfigReactiveWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'nettyWriteResponseFilter' defined in class path resource [org/springframework/cloud/gateway/config/GatewayAutoConfiguration$NettyConfiguration.class]: Unsatisfied dependency expressed through method 'nettyWriteResponseFilter' parameter 0: Error creating bean with name 'gatewayProperties': Could not bind properties to 'GatewayProperties' : prefix=spring.cloud.gateway, ignoreInvalidFields=false, ignoreUnknownFields=true
+2025-05-03T07:11:13.648-03:00 ERROR 9056 --- [bzn-gdr-services] [main] o.s.b.d.LoggingFailureAnalysisReporter   : 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Binding to target org.springframework.cloud.gateway.config.GatewayProperties failed:
+
+    Property: spring.cloud.gateway.routes[0].uri
+    Value: "null"
+    Reason: não deve ser nulo
+
+
+Action:
+
+Update your application's configuration
+
+2025-05-03T08:12:41.448-03:00  WARN 5380 --- [bzn-gdr-services] [reactor-http-nio-1] o.s.c.l.core.RoundRobinLoadBalancer      : No servers available for service: bzn-exemplo-services
+2025-05-03T08:25:36.072-03:00  WARN 5380 --- [bzn-gdr-services] [reactor-http-nio-1] o.s.c.l.core.RoundRobinLoadBalancer      : No servers available for service: bzn-exemplo-services
+2025-05-03T11:30:52.347-03:00  WARN 5380 --- [bzn-gdr-services] [reactor-http-nio-2] o.s.c.l.core.RoundRobinLoadBalancer      : No servers available for service: bzn-exemplo-services
