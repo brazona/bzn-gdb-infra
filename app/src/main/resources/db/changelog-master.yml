@@ -6,4 +6,8 @@ databaseChangeLog:
   - include:
       file: db/scripts/bzn-exemplo-services-roles/schema.sql
   - include:
-      file: db/scripts/bzn-exemplo-services-roles/data.sql      
+      file: db/scripts/bzn-exemplo-services-roles/data.sql
+  - include:
+      file: db/scripts/bzn-exemplo-services-profiles/schema.sql
+  - include:
+      file: db/scripts/bzn-exemplo-services-profiles/data.sql      
