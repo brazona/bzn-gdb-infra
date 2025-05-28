@@ -1,5 +1,5 @@
 databaseChangeLog:
   - include:
-      file: db/script/schema.sql
+      file: db/scripts/bzn-exemplo-services-users/schema.sql
   - include:
-      file: db/script/data.sql
+      file: db/scripts/bzn-exemplo-services-users/data.sql
