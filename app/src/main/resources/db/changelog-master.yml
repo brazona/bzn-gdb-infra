@@ -3,3 +3,7 @@ databaseChangeLog:
       file: db/scripts/bzn-exemplo-services-users/schema.sql
   - include:
       file: db/scripts/bzn-exemplo-services-users/data.sql
+  - include:
+      file: db/scripts/bzn-exemplo-services-roles/schema.sql
+  - include:
+      file: db/scripts/bzn-exemplo-services-roles/data.sql      
