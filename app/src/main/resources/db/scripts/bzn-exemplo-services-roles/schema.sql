@@ -13,3 +13,8 @@ CREATE TABLE ${sql_exemplo_roles_schema}."roles" (
 );
 COMMENT ON TABLE ${sql_exemplo_roles_schema}."roles" IS 'Tabela para persistencia dos dados de papeis de acesso.';
 
+------------------------------------
+-- GRANT
+------------------------------------
+GRANT ALL ON ALL TABLES IN SCHEMA ${sql_exemplo_roles_schema} TO ${sql_exemplo_roles_schema};
+

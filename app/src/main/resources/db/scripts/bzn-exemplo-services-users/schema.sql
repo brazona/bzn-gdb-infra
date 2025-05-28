@@ -3,6 +3,7 @@
 ------------------------------------
 -- ROLES
 ------------------------------------
+DROP ROLE IF EXISTS ${sql_exemplo_users_schema};
 CREATE ROLE ${sql_exemplo_users_schema} NOSUPERUSER NOCREATEDB NOCREATEROLE NOINHERIT LOGIN NOREPLICATION NOBYPASSRLS PASSWORD '${sql_exemplo_users_schema_pass}';
 ------------------------------------
 -- SCHEMAS
@@ -25,3 +26,7 @@ CREATE TABLE ${sql_exemplo_users_schema}."users" (
 );
 COMMENT ON TABLE ${sql_exemplo_users_schema}."users" IS 'Tabela para persistencia dos dados de usuários';
 
+------------------------------------
+-- GRANT
+------------------------------------
+GRANT ALL ON ALL TABLES IN SCHEMA ${sql_exemplo_users_schema} TO ${sql_exemplo_users_schema};

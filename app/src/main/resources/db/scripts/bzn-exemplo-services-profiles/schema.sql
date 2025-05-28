@@ -13,3 +13,7 @@ CREATE TABLE ${sql_exemplo_profiles_schema}."profiles" (
 );
 COMMENT ON TABLE ${sql_exemplo_profiles_schema}."profiles" IS 'Tabela para persistencia dos dados de perfis de acesso dos usuários.';
 
+------------------------------------
+-- GRANT
+------------------------------------
+GRANT ALL ON ALL TABLES IN SCHEMA ${sql_exemplo_profiles_schema} TO ${sql_exemplo_profiles_schema};
