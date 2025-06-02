@@ -1,5 +1,20 @@
 --liquibase formatted sql
 --changeset dirk:2
+
+------------------------------------
+-- ROLES
+------------------------------------
+DROP ROLE IF EXISTS ${sql_exemplo_profiles_schema};
+CREATE ROLE ${sql_exemplo_profiles_schema} NOSUPERUSER NOCREATEDB NOCREATEROLE NOINHERIT LOGIN NOREPLICATION NOBYPASSRLS PASSWORD '${sql_exemplo_profiles_schema_pass}';
+------------------------------------
+-- SCHEMAS
+------------------------------------
+DROP SCHEMA IF EXISTS ${sql_exemplo_profiles_schema};
+CREATE SCHEMA ${sql_exemplo_profiles_schema} AUTHORIZATION ${sql_exemplo_profiles_schema};
+------------------------------------
+-- GRANT
+------------------------------------
+GRANT ALL ON ALL TABLES IN SCHEMA ${sql_exemplo_profiles_schema} TO ${sql_exemplo_profiles_schema};
 ------------------------------------
 -- TABLE PROFILES
 ------------------------------------
@@ -12,8 +27,3 @@ CREATE TABLE ${sql_exemplo_profiles_schema}."profiles" (
 	CONSTRAINT profiles_pkey PRIMARY KEY (id)
 );
 COMMENT ON TABLE ${sql_exemplo_profiles_schema}."profiles" IS 'Tabela para persistencia dos dados de perfis de acesso dos usuários.';
-
-------------------------------------
--- GRANT
-------------------------------------
-GRANT ALL ON ALL TABLES IN SCHEMA ${sql_exemplo_profiles_schema} TO ${sql_exemplo_profiles_schema};
