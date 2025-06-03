@@ -11,10 +11,6 @@ CREATE ROLE ${sql_exemplo_users_schema} NOSUPERUSER NOCREATEDB NOCREATEROLE NOIN
 DROP SCHEMA IF EXISTS ${sql_exemplo_users_schema};
 CREATE SCHEMA ${sql_exemplo_users_schema} AUTHORIZATION ${sql_exemplo_users_schema};
 ------------------------------------
--- GRANT
-------------------------------------
-GRANT ALL ON ALL TABLES IN SCHEMA ${sql_exemplo_users_schema} TO ${sql_exemplo_users_schema};
-------------------------------------
 -- SEARCH PATH
 ------------------------------------
 ALTER ROLE ${sql_exemplo_users_schema} SET search_path to ${sql_exemplo_users_schema};
@@ -29,3 +25,9 @@ CREATE TABLE ${sql_exemplo_users_schema}."users" (
 	CONSTRAINT users_email_unique UNIQUE (email)
 );
 COMMENT ON TABLE ${sql_exemplo_users_schema}."users" IS 'Tabela para persistencia dos dados de usuários';
+
+------------------------------------
+-- GRANT
+------------------------------------
+GRANT ALL ON ALL TABLES IN SCHEMA ${sql_exemplo_users_schema} TO ${sql_exemplo_users_schema};
+ALTER DEFAULT PRIVILEGES IN SCHEMA ${sql_exemplo_users_schema} GRANT ALL ON TABLES TO ${sql_exemplo_users_schema};
