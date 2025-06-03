@@ -12,9 +12,9 @@ CREATE ROLE ${sql_exemplo_profiles_schema} NOSUPERUSER NOCREATEDB NOCREATEROLE N
 DROP SCHEMA IF EXISTS ${sql_exemplo_profiles_schema};
 CREATE SCHEMA ${sql_exemplo_profiles_schema} AUTHORIZATION ${sql_exemplo_profiles_schema};
 ------------------------------------
--- GRANT
+-- SEARCH PATH
 ------------------------------------
-GRANT ALL ON ALL TABLES IN SCHEMA ${sql_exemplo_profiles_schema} TO ${sql_exemplo_profiles_schema};
+ALTER ROLE ${sql_exemplo_profiles_schema} SET search_path to ${sql_exemplo_profiles_schema};
 ------------------------------------
 -- TABLE PROFILES
 ------------------------------------
@@ -27,3 +27,9 @@ CREATE TABLE ${sql_exemplo_profiles_schema}."profiles" (
 	CONSTRAINT profiles_pkey PRIMARY KEY (id)
 );
 COMMENT ON TABLE ${sql_exemplo_profiles_schema}."profiles" IS 'Tabela para persistencia dos dados de perfis de acesso dos usuários.';
+
+------------------------------------
+-- GRANT
+------------------------------------
+GRANT ALL ON ALL TABLES IN SCHEMA ${sql_exemplo_profiles_schema} TO ${sql_exemplo_profiles_schema};
+ALTER DEFAULT PRIVILEGES IN SCHEMA ${sql_exemplo_profiles_schema} GRANT ALL ON TABLES TO ${sql_exemplo_profiles_schema};

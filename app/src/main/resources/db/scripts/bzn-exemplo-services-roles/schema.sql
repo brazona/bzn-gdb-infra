@@ -11,9 +11,9 @@ CREATE ROLE ${sql_exemplo_roles_schema} NOSUPERUSER NOCREATEDB NOCREATEROLE NOIN
 DROP SCHEMA IF EXISTS ${sql_exemplo_roles_schema};
 CREATE SCHEMA ${sql_exemplo_roles_schema} AUTHORIZATION ${sql_exemplo_roles_schema};
 ------------------------------------
--- GRANT
+-- SEARCH PATH
 ------------------------------------
-GRANT ALL ON ALL TABLES IN SCHEMA ${sql_exemplo_roles_schema} TO ${sql_exemplo_roles_schema};
+ALTER ROLE ${sql_exemplo_roles_schema} SET search_path to ${sql_exemplo_roles_schema};
 ------------------------------------
 -- TABLE ROLES
 ------------------------------------
@@ -26,3 +26,8 @@ CREATE TABLE ${sql_exemplo_roles_schema}."roles" (
 );
 COMMENT ON TABLE ${sql_exemplo_roles_schema}."roles" IS 'Tabela para persistencia dos dados de papeis de acesso.';
 
+------------------------------------
+-- GRANT
+------------------------------------
+GRANT ALL ON ALL TABLES IN SCHEMA ${sql_exemplo_roles_schema} TO ${sql_exemplo_roles_schema};
+ALTER DEFAULT PRIVILEGES IN SCHEMA ${sql_exemplo_roles_schema} GRANT ALL ON TABLES TO ${sql_exemplo_roles_schema};
