@@ -11,3 +11,7 @@ databaseChangeLog:
       file: db/scripts/bzn-exemplo-services-profiles/schema.sql
   - include:
       file: db/scripts/bzn-exemplo-services-profiles/data.sql      
+  - include:
+      file: db/scripts/bzn-gai-services-identity/schema.sql
+  - include:
+      file: db/scripts/bzn-gai-services-identity/data.sql       
