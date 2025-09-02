@@ -78,6 +78,7 @@ Se a instalação ocorrer com sucesso, estará disponível no host: "http://loca
 
 __[descrição do processo de execução da aplicação localhost com docker compose: ]__ Para atender a necessidade de executar a os servidor em ambiente local, foi criado um manifesto compose que inicia as configurações iniciais dos servidores, proporcionando os recursos da arquitetura em ambiente **localhost.**
 
+
 Para executar essa instrução basta abrir o terminal no diretório /app e executar com exemplo abaixo:
 
 ```bash
