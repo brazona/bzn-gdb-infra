@@ -28,6 +28,27 @@ CREATE TABLE ${sql_bzn_gai_identity_schema}."credentials" (
 COMMENT ON TABLE ${sql_bzn_gai_identity_schema}."credentials" IS 'Tabela para persistencia dos dados de credenciais de acesso';
 
 ------------------------------------
+-- TABLE ADDRESSES
+------------------------------------
+DROP TABLE IF EXISTS ${sql_bzn_gai_identity_schema}."addresses";
+CREATE TABLE ${sql_bzn_gai_identity_schema}."addresses" (
+	id int8 GENERATED ALWAYS AS IDENTITY( INCREMENT BY 1 MINVALUE 1 MAXVALUE 9223372036854775807 START 1 CACHE 1 NO CYCLE) NOT NULL,
+	name varchar(255) NOT NULL,
+	street varchar(255) NOT NULL,
+	number varchar(50) NOT NULL,
+	complement varchar(255),
+	neighborhood varchar(100) NOT NULL,
+	city varchar(50) NOT NULL,
+	state varchar(50) NOT NULL,
+	country varchar(50) NOT NULL,
+	zip_code varchar(20) NOT NULL,
+	username varchar(255) NOT NULL,
+	CONSTRAINT addresses_pkey PRIMARY KEY (id),
+	CONSTRAINT addresses_username_unique UNIQUE (username)
+);
+COMMENT ON TABLE ${sql_bzn_gai_identity_schema}."addresses" IS 'Tabela para persistencia as informa����es de enderecos dos usuarios';
+
+------------------------------------
 -- GRANT
 ------------------------------------
 GRANT ALL ON ALL TABLES IN SCHEMA ${sql_bzn_gai_identity_schema} TO ${sql_bzn_gai_identity_schema};
