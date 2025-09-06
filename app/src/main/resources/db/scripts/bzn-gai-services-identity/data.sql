@@ -25,6 +25,36 @@ INSERT INTO ${sql_bzn_gai_identity_schema}."persons" (
     '${sql_bzn_gai_identity_person_gender_1}',
     '${sql_bzn_gai_identity_person_user_1}'
 );
+INSERT INTO ${sql_bzn_gai_identity_schema}."persons" (
+    person_code,
+    name,
+    name_social,
+    document,
+    gender,
+    user_id
+) VALUES (
+    '${sql_bzn_gai_identity_person_code_2}',
+    '${sql_bzn_gai_identity_person_name_2}',
+    '${sql_bzn_gai_identity_person_name_social_2}',
+    '${sql_bzn_gai_identity_person_doc_2}',
+    '${sql_bzn_gai_identity_person_gender_2}',
+    '${sql_bzn_gai_identity_person_user_2}'
+);    
+INSERT INTO ${sql_bzn_gai_identity_schema}."persons" (
+    person_code,
+    name,
+    name_social,
+    document,
+    gender,
+    user_id
+) VALUES (
+    '${sql_bzn_gai_identity_person_code_3}',
+    '${sql_bzn_gai_identity_person_name_3}',
+    '${sql_bzn_gai_identity_person_name_social_3}',
+    '${sql_bzn_gai_identity_person_doc_3}',
+    '${sql_bzn_gai_identity_person_gender_3}',
+    '${sql_bzn_gai_identity_person_user_3}'
+);
 
 ------------------------------------
 -- TABLE ADDRESSES

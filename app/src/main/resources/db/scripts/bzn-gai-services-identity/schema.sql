@@ -28,7 +28,7 @@ CREATE TABLE ${sql_bzn_gai_identity_schema}."credentials" (
 COMMENT ON TABLE ${sql_bzn_gai_identity_schema}."credentials" IS 'Tabela para persistencia dos dados de credenciais de acesso';
 
 ------------------------------------
--- TABLE ADDRESSES
+-- TABLE PERSONS
 ------------------------------------
 DROP TABLE IF EXISTS ${sql_bzn_gai_identity_schema}."persons";
 CREATE TABLE ${sql_bzn_gai_identity_schema}."persons" (
@@ -40,8 +40,8 @@ CREATE TABLE ${sql_bzn_gai_identity_schema}."persons" (
 	gender varchar(255) NOT NULL,
 	user_id int8 NOT NULL,
 	CONSTRAINT persons_pkey PRIMARY KEY (id),
-	CONSTRAINT persons_code_pkey PRIMARY KEY (person_code),
-	CONSTRAINT persons_user_id_fkey FOREIGN KEY (user_id) REFERENCES credentials (id)
+	CONSTRAINT persons_code_unique UNIQUE (person_code),
+	CONSTRAINT persons_user_id_fkey FOREIGN KEY (user_id) REFERENCES ${sql_bzn_gai_identity_schema}."credentials" (id)
 );
 COMMENT ON TABLE ${sql_bzn_gai_identity_schema}."persons" IS 'Tabela para persistencia as informa����es da pessoa';
 
