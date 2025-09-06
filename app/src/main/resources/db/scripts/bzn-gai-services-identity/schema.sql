@@ -43,8 +43,7 @@ CREATE TABLE ${sql_bzn_gai_identity_schema}."addresses" (
 	country varchar(50) NOT NULL,
 	zip_code varchar(20) NOT NULL,
 	username varchar(255) NOT NULL,
-	CONSTRAINT addresses_pkey PRIMARY KEY (id),
-	CONSTRAINT addresses_username_unique UNIQUE (username)
+	CONSTRAINT addresses_pkey PRIMARY KEY (id)
 );
 COMMENT ON TABLE ${sql_bzn_gai_identity_schema}."addresses" IS 'Tabela para persistencia as informa����es de enderecos dos usuarios';
 
