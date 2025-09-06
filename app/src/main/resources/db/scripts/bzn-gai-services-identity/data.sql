@@ -6,6 +6,25 @@ INSERT INTO ${sql_bzn_gai_identity_schema}."credentials" (username, password) VA
 INSERT INTO ${sql_bzn_gai_identity_schema}."credentials" (username, password) VALUES ('${sql_bzn_gai_identity_username_2}', '${sql_bzn_gai_identity_password_2}');
 INSERT INTO ${sql_bzn_gai_identity_schema}."credentials" (username, password) VALUES ('${sql_bzn_gai_identity_username_3}', '${sql_bzn_gai_identity_password_3}');
 
+------------------------------------
+-- TABLE PERSONS
+------------------------------------
+
+INSERT INTO ${sql_bzn_gai_identity_schema}."persons" (
+    person_code,
+    name,
+    name_social,
+    document,
+    gender,
+    user_id
+) VALUES (
+    '${sql_bzn_gai_identity_person_code_1}',
+    '${sql_bzn_gai_identity_person_name_1}',
+    '${sql_bzn_gai_identity_person_name_social_1}',
+    '${sql_bzn_gai_identity_person_doc_1}',
+    '${sql_bzn_gai_identity_person_gender_1}',
+    '${sql_bzn_gai_identity_person_user_1}'
+);
 
 ------------------------------------
 -- TABLE ADDRESSES
