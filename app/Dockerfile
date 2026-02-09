@@ -1,5 +1,5 @@
 # Etapa 1: Compilar a aplicação
-FROM maven:3.9.9-sapmachine-24 AS build
+FROM maven:3.9.9-sapmachine-21 AS build
 
 LABEL maintainer=Brazona\ Cézar
 VOLUME /tmp
@@ -32,7 +32,7 @@ COPY src ./src
 RUN mvn clean install
 
 # Etapa 2: Criar a imagem final para execução
-FROM openjdk:24-slim
+FROM amazoncorretto:21-alpine-jdk
 
 # Define o diretório de trabalho dentro do contêiner
 WORKDIR /app
