@@ -38,7 +38,7 @@ COPY src ./src
 RUN mvn clean install
 
 # Etapa 2: Criar a imagem final para execução
-FROM amazoncorretto:21-alpine-jdk
+FROM amazoncorretto:25-alpine-jdk
 
 # Define o diretório de trabalho dentro do contêiner
 WORKDIR /app
